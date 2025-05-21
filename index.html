@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tabuleiro de Xadrez</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        canvas {
+            border: 3px solid #333;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="chessboard" width="400" height="400" aria-label="Tabuleiro de Xadrez"></canvas>
+    <script>
+        const canvas = document.getElementById('chessboard');
+        const ctx = canvas.getContext('2d');
+        const size = 8;
+        const tileSize = canvas.width / size;
+        ctx.lineWidth = 2;
+        // Desenhar casas do tabuleiro
+        for(let row = 0; row < size; row++) {
+            for(let col = 0; col < size; col++) {
+                // Variável para alternar cores (preto e branco)
+                if ((row + col) % 2 === 0) {
+                    ctx.fillStyle = '#f0d9b5'; // cor clara típica do tabuleiro
+                } else {
+                    ctx.fillStyle = '#b58863'; // cor escura típica do tabuleiro
+                }
+                ctx.fillRect(col * tileSize, row * tileSize, tileSize, tileSize);
+                ctx.strokeStyle = '#000000';
+                ctx.strokeRect(col * tileSize, row * tileSize, tileSize, tileSize);
+            }
+        }
+    </script>
+</body>
+</html>
